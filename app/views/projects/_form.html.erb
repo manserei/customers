@@ -1,0 +1,7 @@
+<%= simple_form_for [@project.customer, @project] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.association :customer %>
+
+  <%= f.submit %>
+<% end %>

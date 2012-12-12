@@ -1,0 +1,18 @@
+<h1>Projects owned by <%= @customer %></h1>
+
+<table>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.title %></td>
+      <td>
+        <%= link_to 'Show', [project.customer, project] %>
+        <%= link_to 'Edit', [:edit, project.customer, project] %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to "Add New Project", new_customer_project_path %>
+  <%= link_to "Return to customer", @customer %>
+</p>

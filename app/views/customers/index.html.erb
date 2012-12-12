@@ -1,0 +1,22 @@
+<h1>List of all customers</h1>
+
+<p><%= link_to "Add customer", new_customer_path %></p>
+
+<table>
+  <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.first_name %></td>
+      <td><%= customer.last_name %></td>
+      <td><%= customer.email %></td>
+      <td><%= customer.birthday %></td>
+      <td>
+        <%= link_to 'Show', customer %>
+        <%= link_to 'Projects', [customer, :projects] %>
+
+        <%= link_to 'Edit', [:edit, customer] %>
+        <%= link_to 'Delete', customer, :method => :delete,
+              :confirm => "Are you sure?" %>
+      </td>
+    </tr>
+  <% end %>
+</table>

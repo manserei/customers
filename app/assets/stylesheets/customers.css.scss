@@ -1,0 +1,20 @@
+// Place all the styles related to the customers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$color: whitesmoke;
+
+body { background-color: $color; color: invert($color); }
+
+form {
+  label { display: inline-block; width: 200px; }
+}
+
+table {
+  border-collapse: collapse;
+
+  td {
+    border: 1px dotted #999;
+    padding: 10px 20px;
+  }
+}
