@@ -21,9 +21,7 @@ describe Customer do
   end
 
   describe '#to_param' do
-    before do
-      subject.save!
-    end
+    before { subject.save! }
 
     it "should return a sluggified version of the first name" do
       subject.to_param.should == "#{subject.id}-#{subject.first_name.parameterize}"
@@ -31,67 +29,34 @@ describe Customer do
   end
 
   context "validating" do
-
     context "with an unfeasibly short first name" do
-      before do
-        subject.first_name = "Mo"
-      end
-
-      it "should not be valid" do
-        subject.should_not be_valid
-      end
+      before { subject.first_name = "Mo" }
+      it { should_not be_valid }
     end
 
     context "with the last_name missing" do
-      before do
-        subject.last_name = ""
-      end
-
-      it "should not be valid" do
-        subject.should_not be_valid
-      end
+      before { subject.last_name = "" }
+      it { should_not be_valid }
     end
-
 
     context "email" do
       context "with an invalid email" do
-        before do
-          subject.email = "fake_email"
-        end
-
-        it "should not be valid" do
-          subject.should_not be_valid
-        end
+        before { subject.email = "fake_email" }
+        it { should_not be_valid }
       end
 
       context "defunct email domains" do
-
-        before do
-          subject.email = "reallynoinfo@aol.com"
-        end
-
-        it "should not be valid" do
-          subject.should_not be_valid
-        end
-
+        before { subject.email = "reallynoinfo@aol.com" }
+        it { should_not be_valid }
       end
 
       context "unique email address" do
-
         before do
           customer = FactoryGirl.create(:customer)
-
-          # Customer.create(
-          #   :first_name => "Jeff",
-          #   :last_name  => "Winters",
-          #   :email      => "jeff@winters.com")
           subject.email = customer.email
         end
 
-        it "should not be valid" do
-          subject.should_not be_valid
-        end
-
+        it { should_not be_valid }
       end
 
     end
@@ -105,10 +70,7 @@ describe Customer do
         subject.projects.new({ :title => "Project 11" })
       end
 
-      it "shouldn't add more than the maximum" do
-          subject.should_not be_valid
-      end
-
+      it { should_not be_valid }
     end
   end
 
