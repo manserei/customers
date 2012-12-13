@@ -1,9 +1,22 @@
 require 'spec_helper'
 
+# EXERCISES:
+#
+# - Test that a customer needs to have first name,
+#   last name and email to be valid.
+# - Test that a customer's email address needs to be unique.
+# - Test if destroying a customer record changes the number
+#   of customers in the database.
+# - Test that a customer is not allowed to have an aol.com email address.
+# - Test that a customer can't have more than 10 projects.
+
+
 describe Customer do
   before do
-    @customer = Customer.new(:first_name => "Hans Hendrik", :last_name => "Mans",
-      :email => "hans@mans.de")
+    @customer = Customer.new(
+      :first_name => "Hans Hendrik",
+      :last_name  => "Mans",
+      :email      => "hans@mans.de")
   end
 
   describe '#full_name' do

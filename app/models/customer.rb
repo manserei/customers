@@ -20,7 +20,7 @@ class Customer < ActiveRecord::Base
   scope :from, lambda { |city| where(:city => city) }
 
   def reached_project_limit?
-    projects.count >= 1
+    projects.count >= 10
   end
 
   # class << self
