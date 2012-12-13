@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   attr_accessible :description, :title, :customer_id
-  validates_presence_of :customer_id
+  validates_presence_of :customer_id, :title
 
   belongs_to :customer
 

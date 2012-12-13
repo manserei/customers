@@ -12,20 +12,18 @@ require 'spec_helper'
 
 
 describe Customer do
-  subject { FactoryGirl.build(:customer) }
+  let(:user)       { FactoryGirl.build(:customer) }
+  let(:saved_user) { FactoryGirl.create(:customer) }
+
+  subject { user }
 
   describe '#full_name' do
-    it "should return the full name" do
-      subject.full_name.should == "#{subject.last_name}, #{subject.first_name}"
-    end
+    its(:full_name) { should == "#{user.last_name}, #{user.first_name}" }
   end
 
   describe '#to_param' do
-    before { subject.save! }
-
-    it "should return a sluggified version of the first name" do
-      subject.to_param.should == "#{subject.id}-#{subject.first_name.parameterize}"
-    end
+    subject { saved_user }
+    its(:to_param) { should == "#{saved_user.id}-#{saved_user.first_name.parameterize}" }
   end
 
   context "validating" do
@@ -62,10 +60,23 @@ describe Customer do
   end
 
   describe "destroy" do
-    before { subject.save! }
+    subject { user }
 
-    it { expect { subject.destroy }.to change(Customer, :count).by(-1) }
+    it do
+      subject.save!
+      expect { subject.destroy }.to change(Customer, :count).by(-1)
+    end
   end
 
+  it "should not be allowed to have more than 10 projects"
 
+  describe '#reached_project_limit?' do
+    context "when customer has less than 10 projects" do
+      it "should be true"
+    end
+
+    context "when customer has 10 or more projects" do
+      it "should be false"
+    end
+  end
 end
