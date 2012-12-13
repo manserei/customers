@@ -1,3 +1,7 @@
 <h1>New Project</h1>
 
+<% if @customer.reached_project_limit? %>
+  <p><strong>This customer has reached the project limit. Beware!</strong></p>
+<% end %>
+
 <%= render 'form' %>

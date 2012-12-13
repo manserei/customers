@@ -3,4 +3,10 @@ class Project < ActiveRecord::Base
   validates_presence_of :customer_id
 
   belongs_to :customer
+
+  validate do
+    if customer.reached_project_limit?
+      errors.add(:customer, "has reached project limit")
+    end
+  end
 end

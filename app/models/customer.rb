@@ -7,11 +7,21 @@ class Customer < ActiveRecord::Base
   validates_length_of :first_name, :last_name, :within => 3..50, :allow_blank => true
   validates_format_of :email, :with => /^.+@.+\..+$/, :message => "doesn't look like an email address"
 
+  validate do
+    if email =~ /aol\.com$/
+      errors.add(:email, "we don't want customers from AOL")
+    end
+  end
+
   has_many :notes
   has_many :projects
 
   scope :adult, lambda { where(["birthday < ?", 18.years.ago]) }
   scope :from, lambda { |city| where(:city => city) }
+
+  def reached_project_limit?
+    projects.count >= 1
+  end
 
   # class << self
   #   def adult
