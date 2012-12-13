@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :customer do
-    first_name "Manfred"
-    last_name "Mustermann"
+    first_name { Faker::Name.first_name }
+    last_name  { Faker::Name.last_name }
+    birthday   { (10000 + rand(5000)).days.ago }
 
-    sequence(:email) { |n| "manfred-#{n}@mustermann.de" }
+    email      { Faker::Internet.email }
   end
 end
