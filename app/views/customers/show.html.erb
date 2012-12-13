@@ -7,6 +7,10 @@
 <p>Email: <%= @customer.email %></p>
 <p>Birthday: <%= @customer.birthday %></p>
 
-<%= link_to 'Edit', edit_customer_path %>
+<h3>Notes</h3>
 
+<%= render @customer.notes %>
+
+
+<%= link_to 'Edit', edit_customer_path %>
 <%= link_to 'All customers', customers_path %>
