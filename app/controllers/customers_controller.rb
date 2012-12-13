@@ -1,4 +1,4 @@
-class CustomersController < InheritedResources::Base
+class CustomersController < ApplicationController
   before_filter :load_customer, :only => [:show, :edit, :update, :destroy]
   skip_before_filter :force_login, :only => [:show]
   respond_to :html, :xml, :json
