@@ -58,26 +58,11 @@ describe Customer do
 
         it { should_not be_valid }
       end
-
-    end
-
-    context "maximum projects" do
-      before do
-        subject.save!
-        10.times do |i|
-          subject.projects.create({ :title => "Project #{i}" })
-        end
-        subject.projects.new({ :title => "Project 11" })
-      end
-
-      it { should_not be_valid }
     end
   end
 
   describe "destroy" do
-    before do
-      subject.save!
-    end
+    before { subject.save! }
 
     it { expect { subject.destroy }.to change(Customer, :count).by(-1) }
   end
