@@ -27,7 +27,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'capybara'
-  gem 'database_cleaner'
+  # gem 'database_cleaner'
 end
 
 gem 'jquery-rails'
