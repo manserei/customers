@@ -16,3 +16,18 @@ describe "the customers index" do
     end
   end
 end
+
+describe "creating new customers" do
+  before { visit '/customers' }
+  pending
+end
+
+describe "editing a customer" do
+  before { visit '/customers' }
+  pending
+end
+
+describe "deleting a customer" do
+  before { visit '/customers' }
+  pending
+end
