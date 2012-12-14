@@ -26,6 +26,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'capybara'
 end
 
 gem 'jquery-rails'
