@@ -1,8 +1,7 @@
 class Customer < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :email_confirmation, :birthday
+  attr_accessible :first_name, :last_name, :email, :birthday
 
   validates_presence_of :last_name, :email
-  validates_confirmation_of :email  # -> :email_confirmation
   validates_uniqueness_of :email
   validates_length_of :first_name, :last_name, :within => 3..50, :allow_blank => true
   validates_format_of :email, :with => /^.+@.+\..+$/, :message => "doesn't look like an email address"
